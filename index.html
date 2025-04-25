@@ -1,80 +1,167 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Pernikahan Andi & Sinta</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fffaf0, #fdf5e6);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #4b2e05;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
     .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 30px;
+      background: #fff8e1;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 181, 0, 0.25);
+      padding: 40px 30px;
+      max-width: 450px;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .container:hover {
+      transform: scale(1.03);
     }
     h1 {
-      color: #c14444;
-      font-size: 32px;
+      font-weight: 600;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #d47b00;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px #fceabb;
     }
-    h2 {
-      color: #444;
+    p.intro {
+      font-weight: 300;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
     }
     .names {
-      font-size: 28px;
-      font-weight: bold;
-      margin: 20px 0;
-      color: #8b0000;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #a94c00;
+      margin-bottom: 20px;
+      font-family: 'Segoe Script', cursive;
+      text-shadow: 0 1px 3px #fceabb;
     }
-    .date {
-      font-size: 20px;
-      margin: 10px 0;
-    }
-    .location {
-      margin: 20px 0;
+    .date, .location {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #804000;
     }
     .footer {
-      font-size: 14px;
+      font-size: 0.9rem;
       margin-top: 30px;
-      color: #777;
+      color: #886230;
+      font-style: italic;
+    }
+    /* Tombol */
+    .btn-group {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    button {
+      background: #f8b500;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(248, 181, 0, 0.6);
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 1rem;
+      min-width: 120px;
+    }
+    button:hover {
+      background: #d47b00;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(212, 123, 0, 0.8);
+    }
+    button:active {
+      transform: translateY(-1px);
+    }
+    /* Responsive */
+    @media(max-width: 480px) {
+      .container {
+        max-width: 90vw;
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      .names {
+        font-size: 1.6rem;
+      }
+      .date, .location {
+        font-size: 1rem;
+      }
+      button {
+        min-width: 100px;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Undangan Pernikahan</h1>
-  <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir dalam acara pernikahan kami:</p>
+  <div class="container">
+    <h1>Undangan Pernikahan</h1>
+    <p class="intro">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir dalam acara pernikahan kami:</p>
 
-  <div class="names">
-    Andi & Sinta
+    <div class="names">Andi &amp; Sinta</div>
+
+    <div class="date">
+      Sabtu, 10 Mei 2025<br />
+      Pukul 10.00 WIB - Selesai
+    </div>
+
+    <div class="location">
+      Gedung Serbaguna Bahagia<br />
+      Jl. Kenangan No.123, Jakarta
+    </div>
+
+    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+
+    <div class="btn-group">
+      <button onclick="alert('Terima kasih sudah konfirmasi!')">RSVP</button>
+      <button onclick="shareInvitation()">Bagikan</button>
+    </div>
+
+    <div class="footer">
+      Hormat kami,<br />
+      Keluarga Besar Andi &amp; Sinta
+    </div>
   </div>
 
-  <div class="date">
-    Sabtu, 10 Mei 2025<br>
-    Pukul 10.00 WIB - Selesai
-  </div>
-
-  <div class="location">
-    Gedung Serbaguna Bahagia<br>
-    Jl. Kenangan No.123, Jakarta
-  </div>
-
-  <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
-
-  <div class="footer">
-    Hormat kami,<br>
-    Keluarga Besar Andi & Sinta
-  </div>
-</div>
-
+  <script>
+    function shareInvitation() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Undangan Pernikahan Andi & Sinta',
+          text: 'Yuk hadir di acara pernikahan Andi & Sinta pada 10 Mei 2025!',
+          url: window.location.href
+        }).then(() => {
+          alert('Terima kasih sudah membagikan undangan!');
+        }).catch((error) => {
+          alert('Gagal membagikan undangan: ' + error);
+        });
+      } else {
+        alert('Fitur share tidak didukung di browser ini. Silakan salin link secara manual.');
+      }
+    }
+  </script>
 </body>
 </html>
