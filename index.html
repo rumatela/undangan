@@ -1,193 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* Styling utama */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fffaf0;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(193, 68, 68, 0.15);
-      text-align: center;
-    }
-    h1 {
-      color: #c14444;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.1rem;
-      margin: 10px 0;
-    }
-    .photo-section img {
-      width: 250px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(193, 68, 68, 0.2);
-      margin-bottom: 20px;
-    }
-    .couple h2 {
-      margin: 5px 0 0 0;
-      color: #8b0000;
-    }
-    .small-text {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 15px;
-    }
-    .highlight {
-      font-weight: bold;
-      color: #a83232;
-      margin: 25px 0;
-      font-size: 1.2rem;
-    }
-    blockquote {
-      font-style: italic;
-      color: #555;
-      border-left: 4px solid #c14444;
-      padding-left: 15px;
-      margin: 25px 0;
-    }
-    blockquote span {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #8b0000;
-    }
-    .button-group {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      background-color: #c14444;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #a73232;
-    }
-
-    /* Styling ucapan terima kasih */
-    .thank-you {
-      margin-top: 40px;
-      padding: 20px;
-      background: #f9f4f0;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(193, 68, 68, 0.1);
-      color: #8b0000;
-      font-style: italic;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-
-    /* Modal Background */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; 
-      z-index: 1000; 
-      padding-top: 100px; 
-      left: 0;
-      top: 0;
-      width: 100%; 
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
-    }
-    /* Modal Content */
-    .modal-content {
-      background-color: #fffaf0;
-      margin: auto;
-      padding: 30px 25px;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 5px 25px rgba(193, 68, 68, 0.3);
-      text-align: center;
-      position: relative;
-    }
-    .modal-content h3 {
-      color: #c14444;
-      margin-bottom: 20px;
-    }
-    .modal-content p {
-      font-size: 1.1rem;
-      margin: 12px 0;
-      color: #333;
-    }
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 15px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #c14444;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    .close-btn:hover {
-      color: #8b0000;
-    }
-    #copyBtn {
-      background-color: #c14444;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      font-size: 0.95rem;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-left: 10px;
-      transition: background-color 0.3s ease;
-    }
-    #copyBtn:hover {
-      background-color: #a73232;
-    }
-    #copyAlert {
-      display: none;
-      margin-top: 12px;
-      color: green;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-
     <h1>Undangan Pernikahan</h1>
     <p>Dengan bahagia kami mengundang Anda ke pernikahan kami</p>
 
     <div class="photo-section">
-      <img src="foto.jpg" alt="Foto Pengantin" class="photo" />
+      <img src="foto.jpg" alt="Foto Pengantin" class="photo">
     </div>
 
     <div class="couple">
       <h2>Andi Ramadhan</h2>
       <p class="small-text">Putra dari Bapak Suhardi & Ibu Nuraini</p>
-
       <h2>Sinta Ayu Lestari</h2>
       <p class="small-text">Putri dari Bapak Sutrisno & Ibu Dwi Ratna</p>
     </div>
@@ -195,87 +25,22 @@
     <p class="highlight">Sabtu, 10 Mei 2025<br>Gedung Serbaguna Bahagia</p>
 
     <blockquote class="quote">
-      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri.”<br />
+      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri.”
       <span>- QS. Ar-Rum: 21</span>
     </blockquote>
 
     <div class="button-group">
-      <a href="acara.html" class="btn"><i class="fa-solid fa-calendar-day"></i> Detail Acara</a>
-      <a href="galeri.html" class="btn"><i class="fa-solid fa-image"></i> Galeri</a>
-      <button class="btn btn-special" onclick="ucapan()"><i class="fa-solid fa-comment-dots"></i> Beri Ucapan</button>
-      <button class="btn" id="openModalBtn"><i class="fa-solid fa-gift"></i> Berikan Kado</button>
+      <a href="acara.html" class="btn">Detail Acara</a>
+      <a href="galeri.html" class="btn">Galeri</a>
+      <button class="btn btn-special" onclick="ucapan()">Beri Ucapan</button>
     </div>
 
-    <!-- Bagian ucapan terima kasih dari pengantin -->
     <div class="thank-you">
-      Terima kasih atas doa, kehadiran, dan restu yang diberikan.<br />
-      Semoga Allah SWT membalas kebaikan Anda semua.<br /><br />
+      Terima kasih atas doa, kehadiran, dan restu yang diberikan.<br>
       <strong>Andi & Sinta</strong>
     </div>
   </div>
 
-  <!-- Modal untuk info rekening -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModalBtn">&times;</span>
-      <h3>Informasi Rekening Kado</h3>
-      <p><strong>Bank:</strong> Bank Mandiri</p>
-      <p>
-        <strong>Nomor Rekening:</strong>
-        <span id="rekeningNumber">1234 5678 9012 3456</span>
-        <button id="copyBtn">Copy</button>
-      </p>
-      <p><strong>Atas Nama:</strong> Andi Ramadhan</p>
-      <p>Terima kasih atas kebaikan hati Anda untuk memberikan kado melalui transfer.</p>
-      <div id="copyAlert">Nomor rekening berhasil disalin!</div>
-    </div>
-  </div>
-
-  <script>
-    // Fungsi ucapan terima kasih saat tombol beri ucapan diklik
-    function ucapan() {
-      alert("Terima kasih atas doa dan kehadirannya! 😊");
-    }
-
-    // Modal element references
-    const modal = document.getElementById('modal');
-    const openModalBtn = document.getElementById('openModalBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const rekeningNumber = document.getElementById('rekeningNumber');
-    const copyAlert = document.getElementById('copyAlert');
-
-    // Buka modal ketika tombol Berikan Kado diklik
-    openModalBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
-      copyAlert.style.display = 'none'; // Sembunyikan alert saat buka modal
-    });
-
-    // Tutup modal saat klik tombol close
-    closeModalBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    // Tutup modal saat klik di luar modal content
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-
-    // Fungsi copy nomor rekening ke clipboard
-    copyBtn.addEventListener('click', () => {
-      // Ambil teks nomor rekening tanpa spasi
-      const textToCopy = rekeningNumber.textContent.replace(/\s+/g, '');
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        copyAlert.style.display = 'block';
-        setTimeout(() => {
-          copyAlert.style.display = 'none';
-        }, 2000);
-      }).catch(() => {
-        alert('Gagal menyalin nomor rekening, silakan salin secara manual.');
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
