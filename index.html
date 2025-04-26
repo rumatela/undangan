@@ -4,43 +4,264 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan</title>
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    /* Style tambahan untuk tombol putar musik */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #d6336c;
+    }
+
+    .photo-section img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 20px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .couple h2 {
+      margin: 10px 0 5px;
+      font-size: 22px;
+      color: #ff4081;
+    }
+
+    .small-text {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .highlight {
+      font-size: 18px;
+      margin: 20px 0;
+      color: #d6336c;
+      font-weight: bold;
+    }
+
+    .quote {
+      background: #fff5f7;
+      margin: 20px auto;
+      padding: 15px;
+      border-left: 5px solid #ff69b4;
+      max-width: 500px;
+      font-style: italic;
+      border-radius: 8px;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .button-group {
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 12px 20px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff1493;
+    }
+
+    .btn-special {
+      background: #ff1493;
+    }
+
+    .thank-you {
+      margin-top: 40px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Modal Style */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ff69b4;
+    }
+
+    /* Tombol Play Musik */
     #playButton {
       display: none;
       position: fixed;
       top: 20px;
       right: 20px;
-      background: #f9c6c9;
+      background: #ff69b4;
+      color: white;
       border: none;
       padding: 10px 20px;
-      border-radius: 10px;
-      font-size: 16px;
+      border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1000;
+      font-weight: bold;
+      z-index: 1002;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Bunga-bunga jatuh */
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://i.postimg.cc/fR2cfbr7/flower.png') no-repeat center/contain;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    /* Media Queries untuk Responsivitas */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .photo-section img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .couple h2 {
+        font-size: 20px;
+      }
+
+      .highlight {
+        font-size: 16px;
+      }
+
+      .quote {
+        max-width: 90%;
+        font-size: 14px;
+      }
+
+      .btn {
+        padding: 10px 18px;
+        font-size: 12px;
+      }
+
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-special {
+        margin-top: 10px;
+      }
+
+      .thank-you {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .photo-section img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .highlight {
+        font-size: 14px;
+      }
+
+      .quote {
+        max-width: 80%;
+      }
+
+      .btn {
+        padding: 8px 15px;
+        font-size: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Audio Musik -->
+  <!-- Audio Background -->
   <audio id="backgroundAudio" autoplay loop hidden>
     <source src="Gamon.mp3" type="audio/mpeg">
     Browser Anda tidak mendukung audio.
   </audio>
 
-  <!-- Tombol manual jika autoplay gagal -->
+  <!-- Tombol Play jika autoplay gagal -->
   <button id="playButton" onclick="playAudio()">Putar Musik</button>
 
-  <!-- Konten Undangan -->
   <div class="container">
     <h1>Undangan Pernikahan</h1>
     <p>Dengan bahagia kami mengundang Anda ke pernikahan kami</p>
 
     <div class="photo-section">
-      <img src="foto.jpg" alt="Foto Pengantin" class="photo">
+      <img src="foto.jpg" alt="Foto Pengantin">
     </div>
 
     <div class="couple">
@@ -53,7 +274,7 @@
     <p class="highlight">Sabtu, 10 Mei 2025<br>Gedung Serbaguna Bahagia</p>
 
     <blockquote class="quote">
-      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri.”
+      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri.” 
       <span>- QS. Ar-Rum: 21</span>
     </blockquote>
 
@@ -71,7 +292,7 @@
   </div>
 
   <!-- Modal Kado -->
-  <div id="modal" class="modal" style="display:none;">
+  <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
       <h3>Informasi Rekening Kado</h3>
@@ -83,58 +304,43 @@
   </div>
 
   <!-- Script -->
-  <script src="script.js"></script>
   <script>
     function openModal() {
-      document.getElementById('modal').style.display = 'block';
+      document.getElementById('modal').style.display = 'flex';
     }
+
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
-    function ucapan() {
-      alert('Fitur Beri Ucapan masih dalam pengembangan.');
-    }
 
-    // Musik Handling dengan Fade In
-    const audio = document.getElementById('backgroundAudio');
-    const playButton = document.getElementById('playButton');
-
-    function fadeInAudio() {
-      audio.volume = 0; // mulai dari volume 0
-      audio.play();
-      let volume = 0;
-      const fadeInterval = setInterval(() => {
-        if (volume < 1) {
-          volume += 0.02; // Naikkan volume pelan-pelan
-          audio.volume = Math.min(volume, 1);
-        } else {
-          clearInterval(fadeInterval);
-        }
-      }, 100); // setiap 100ms naikkan volume
-    }
-
-    function startAudio() {
-      fadeInAudio();
-      document.removeEventListener('click', startAudio);
-      document.removeEventListener('scroll', startAudio);
-      playButton.style.display = 'none';
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      audio.play().catch(function() {
-        // Autoplay gagal
-        playButton.style.display = 'block';
-      });
-
-      // Kalau user klik atau scroll, langsung play
-      document.addEventListener('click', startAudio);
-      document.addEventListener('scroll', startAudio);
-    });
-
+    // Fungsi untuk memainkan musik jika autoplay gagal
     function playAudio() {
-      fadeInAudio();
-      playButton.style.display = 'none';
+      var audio = document.getElementById('backgroundAudio');
+      audio.play();
+      document.getElementById('playButton').style.display = 'none';
     }
+
+    // Tampilkan tombol play jika audio tidak dapat autoplay
+    window.onload = function() {
+      var audio = document.getElementById('backgroundAudio');
+      if (audio.paused) {
+        document.getElementById('playButton').style.display = 'inline-block';
+      }
+    };
+  </script>
+
+  <!-- Bunga Jatuh -->
+  <script>
+    function generatePetals() {
+      for (let i = 0; i < 10; i++) {
+        let petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * 100 + 'vw'; // Menentukan posisi horizontal acak
+        petal.style.animationDuration = Math.random() * 5 + 5 + 's'; // Durasi acak antara 5 hingga 10 detik
+        document.body.appendChild(petal);
+      }
+    }
+    generatePetals();
   </script>
 
 </body>
