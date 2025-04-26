@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri Kenangan</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffaf0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #c14444;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .story {
+      font-size: 18px;
+      color: #7a5a50;
+      margin-bottom: 30px;
+      font-style: italic;
+      line-height: 1.5;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .gallery-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding-bottom: 10px;
+      scroll-behavior: smooth;
+    }
+
+    .gallery-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-scroll img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-scroll img:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #c14444;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #a73232;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><span class="icon">📷</span>Galeri Kenangan</h1>
+    <p class="subtitle">Beberapa momen spesial kami yang ingin kami bagikan kepada Anda.</p>
+
+    <p class="story">
+      Setiap foto di sini mengabadikan cerita dan cinta kami yang ingin kami bagi bersama keluarga dan sahabat tercinta. Terima kasih telah menjadi bagian dari perjalanan indah ini.
+    </p>
+
+    <div class="gallery-scroll" id="gallery">
+      <img src="foto.jpg" alt="Foto 1" />
+      <img src="foto.jpg" alt="Foto 2" />
+      <img src="foto.jpg" alt="Foto 3" />
+      <img src="foto.jpg" alt="Foto 4" />
+      <img src="foto.jpg" alt="Foto 5" />
+    </div>
+
+    <a href="index.html" class="btn">⬅ Kembali ke Beranda</a>
+  </div>
+
+  <script>
+    const gallery = document.getElementById("gallery");
+
+    let scrollAmount = 0;
+    const slideWidth = 320; // ukuran gambar + gap
+
+    function autoScrollGallery() {
+      scrollAmount += slideWidth;
+      if (scrollAmount >= gallery.scrollWidth - gallery.clientWidth) {
+        scrollAmount = 0;
+      }
+      gallery.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
+    }
+
+    setInterval(autoScrollGallery, 3000); // geser setiap 3 detik
+  </script>
+</body>
+</html>

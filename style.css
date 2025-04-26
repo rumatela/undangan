@@ -1,0 +1,118 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fff0f5, #ffe4e1);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #b03a3a;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.couple {
+  font-size: 26px;
+  font-weight: bold;
+  color: #8b0000;
+  margin: 20px 0;
+}
+
+.highlight {
+  font-size: 18px;
+  color: #555;
+  margin: 15px 0;
+}
+
+.button-group {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: #d16c6c;
+  color: white;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #a94040;
+}
+
+.btn-special {
+  background: #4caf50;
+}
+
+.btn-special:hover {
+  background: #388e3c;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.couple-section h2 {
+  font-size: 22px;
+  color: #8b0000;
+  margin: 10px 0 5px;
+}
+
+.small-text {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.event-details {
+  margin-top: 20px;
+}
+.photo-section {
+  margin: 20px 0;
+}
+
+.photo {
+  width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.quote {
+  font-style: italic;
+  color: #555;
+  margin: 30px 0;
+  padding: 15px;
+  background: #fff8e1;
+  border-left: 4px solid #c14444;
+}
+
+.quote span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
