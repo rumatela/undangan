@@ -5,8 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Style tambahan untuk tombol putar musik */
+    #playButton {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #f9c6c9;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Audio Musik -->
+  <audio id="backgroundAudio" autoplay loop hidden>
+    <source src="Gamon.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+
+  <!-- Tombol manual jika autoplay gagal -->
+  <button id="playButton" onclick="playAudio()">Putar Musik</button>
+
+  <!-- Konten Undangan -->
   <div class="container">
     <h1>Undangan Pernikahan</h1>
     <p>Dengan bahagia kami mengundang Anda ke pernikahan kami</p>
@@ -33,6 +61,7 @@
       <a href="acara.html" class="btn">Detail Acara</a>
       <a href="galeri.html" class="btn">Galeri</a>
       <button class="btn btn-special" onclick="ucapan()">Beri Ucapan</button>
+      <button class="btn" onclick="openModal()">Berikan Kado</button>
     </div>
 
     <div class="thank-you">
@@ -41,6 +70,72 @@
     </div>
   </div>
 
+  <!-- Modal Kado -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3>Informasi Rekening Kado</h3>
+      <p><strong>Bank:</strong> Bank Mandiri</p>
+      <p><strong>Nomor Rekening:</strong> 1234 5678 9012 3456</p>
+      <p><strong>Atas Nama:</strong> Andi Ramadhan</p>
+      <p>Terima kasih atas kebaikan Anda!</p>
+    </div>
+  </div>
+
+  <!-- Script -->
   <script src="script.js"></script>
+  <script>
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+    function ucapan() {
+      alert('Fitur Beri Ucapan masih dalam pengembangan.');
+    }
+
+    // Musik Handling dengan Fade In
+    const audio = document.getElementById('backgroundAudio');
+    const playButton = document.getElementById('playButton');
+
+    function fadeInAudio() {
+      audio.volume = 0; // mulai dari volume 0
+      audio.play();
+      let volume = 0;
+      const fadeInterval = setInterval(() => {
+        if (volume < 1) {
+          volume += 0.02; // Naikkan volume pelan-pelan
+          audio.volume = Math.min(volume, 1);
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, 100); // setiap 100ms naikkan volume
+    }
+
+    function startAudio() {
+      fadeInAudio();
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('scroll', startAudio);
+      playButton.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      audio.play().catch(function() {
+        // Autoplay gagal
+        playButton.style.display = 'block';
+      });
+
+      // Kalau user klik atau scroll, langsung play
+      document.addEventListener('click', startAudio);
+      document.addEventListener('scroll', startAudio);
+    });
+
+    function playAudio() {
+      fadeInAudio();
+      playButton.style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
