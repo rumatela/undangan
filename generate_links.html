@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generator Link Undangan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      font-size: 16px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #2d6a4f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+    button:hover {
+      background: #3c8a66;
+    }
+    .output {
+      margin-top: 20px;
+      background: #f7f7f7;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      display: block;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Generator Link Undangan</h2>
+  <label for="baseUrl">Masukkan URL dasar undangan (misal: https://namadomainkamu.com/splash.html)</label>
+  <input type="text" id="baseUrl" placeholder="https://namadomainkamu.com/splash.html" />
+
+  <label for="namaList">Masukkan daftar nama tamu, satu nama per baris:</label>
+  <textarea id="namaList" placeholder="Pak Budi&#10;Ibu Siti&#10;Keluarga Andi"></textarea>
+
+  <button onclick="generateLinks()">Generate Links</button>
+
+  <div class="output" id="output" style="display:none;"></div>
+
+  <script>
+    function encodeName(name) {
+      // Encode spasi dan karakter khusus agar aman di URL
+      return encodeURIComponent(name.trim());
+    }
+
+    function generateLinks() {
+      const baseUrl = document.getElementById('baseUrl').value.trim();
+      const namesText = document.getElementById('namaList').value.trim();
+      const outputDiv = document.getElementById('output');
+
+      if (!baseUrl) {
+        alert('Masukkan URL dasar undangan terlebih dahulu!');
+        return;
+      }
+      if (!namesText) {
+        alert('Masukkan daftar nama tamu terlebih dahulu!');
+        return;
+      }
+
+      const names = namesText.split('\n').filter(n => n.trim() !== '');
+      if (names.length === 0) {
+        alert('Daftar nama tidak boleh kosong!');
+        return;
+      }
+
+      let result = '';
+      names.forEach(name => {
+        const url = `${baseUrl}?nama=${encodeName(name)}`;
+        result += `${url}\n`;
+      });
+
+      outputDiv.style.display = 'block';
+      outputDiv.textContent = result;
+    }
+  </script>
+
+</body>
+</html>
