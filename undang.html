@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Undangan Pernikahan</title>
   <style>
     html { scroll-behavior: smooth; }
     body { margin:0; font-family:'Poppins',sans-serif; background: linear-gradient(to bottom, #eafaf1, #f7f1e5); color:#333; }
     nav { position:fixed; top:0; width:100%; background:#2d6a4f; padding:10px; z-index:1000; display:flex; justify-content:center; gap:15px; box-shadow:0 2px 5px rgba(0,0,0,0.2); }
-    nav a, nav button { color:white; text-decoration:none; font-weight:bold; background:transparent; border:none; cursor:pointer; }
+    nav a { color:white; text-decoration:none; font-weight:bold; }
+    nav button { 
+      color:white; text-decoration:none; font-weight:bold; background:transparent; border:none; cursor:pointer; 
+      padding: 0 8px;
+    }
     .section { padding:100px 20px 60px; max-width:800px; margin:0 auto; text-align:center; }
     h1 { color:#1b4332; }
     h2 { color:#2d6a4f; }
@@ -25,11 +29,99 @@
     .close-btn { position:absolute; top:10px; right:15px; cursor:pointer; color:#2d6a4f; font-size:24px; }
     .petal { position:absolute; width:20px; height:20px; background:url('https://i.postimg.cc/fR2cfbr7/flower.png') no-repeat center/contain; animation:fall linear infinite; pointer-events:none; }
     @keyframes fall { 0%{transform:translateY(-100px) rotate(0deg);} 100%{transform:translateY(100vh) rotate(360deg);} }
+
+    /* Container tombol beri ucapan */
+    #ucapanContainer {
+      max-width: 500px;
+      margin: 20px auto 40px;
+      text-align: center;
+      display: block; /* langsung tampil */
+    }
+    #ucapanContainer button {
+      background: #2d6a4f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 15px;
+      transition: background 0.3s ease;
+    }
+    #ucapanContainer button:hover {
+      background: #3c8a66;
+    }
+    /* Container untuk daftar ucapan */
+    #daftarUcapan {
+      background: #fff;
+      max-width: 500px;
+      margin: 20px auto 60px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+      max-height: 300px;
+      overflow-y: auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: none; /* tetap disembunyikan sampai ada ucapan */
+    }
+    #daftarUcapan h3 {
+      margin-top: 0;
+      color: #2d6a4f;
+      text-align: center;
+    }
+    #daftarUcapan .ucapan-item {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+    #daftarUcapan .ucapan-item:last-child {
+      border-bottom: none;
+    }
+    #daftarUcapan .ucapan-nama {
+      font-weight: bold;
+      color: #1b4332;
+    }
+    #daftarUcapan .ucapan-teks {
+      margin-left: 10px;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* Container info berikan kado */
+    #infoKado {
+      max-width: 500px;
+      margin: 0 auto 80px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: #2d6a4f;
+      font-weight: 600;
+      line-height: 1.5;
+      text-align: left;
+      display: block; /* langsung tampil */
+    }
+    #infoKado h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    #infoKado p {
+      margin: 6px 0;
+    }
+    #infoKado .rekening {
+      background: #d8f3dc;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #1b4332;
+      margin-top: 10px;
+      user-select: all; /* biar gampang copy */
+    }
   </style>
 </head>
 <body>
 <audio id="backgroundAudio" autoplay loop hidden>
-  <source src="Gamon.mp3" type="audio/mpeg">
+  <source src="Gamon.mp3" type="audio/mpeg" />
 </audio>
 <button id="playButton" onclick="playAudio()">Putar Musik</button>
 <nav>
@@ -37,85 +129,267 @@
   <a href="#acara">Acara</a>
   <a href="#galeri">Galeri</a>
   <a href="#rsvp">RSVP</a>
-  <button onclick="ucapan()">Beri Ucapan</button>
-  <button onclick="openModal()">Berikan Kado</button>
 </nav>
+
 <div id="home" class="section">
   <h1>Undangan Pernikahan</h1>
   <div id="countdown">Menghitung mundur...</div>
   <p>Dengan bahagia kami mengundang Anda ke pernikahan kami</p>
-  <img src="gambar4.jpg" alt="Pengantin" style="width:150px;height:150px;border-radius:50%;margin:20px 0;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+  <img src="gambar4.jpg" alt="Pengantin" style="width:150px;height:150px;border-radius:50%;margin:20px 0;box-shadow:0 4px 10px rgba(0,0,0,0.1);" />
   <h2>Andi Ramadhan & Sinta Ayu Lestari</h2>
   <p>Sabtu, 10 Mei 2025 | Gedung Serbaguna Bahagia</p>
-  <blockquote>“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan-pasangan untukmu.”<br><small>- QS. Ar-Rum: 21</small></blockquote>
+  <blockquote>
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan-pasangan untukmu.”
+    <br /><small>- QS. Ar-Rum: 21</small>
+  </blockquote>
 </div>
+
 <div id="acara" class="section" style="background:#f0f9f4;">
   <h1>Detail Acara</h1>
-  <h2>Andi Ramadhan</h2><p>Putra dari Bapak Suhardi & Ibu Nuraini</p>
-  <h2>Sinta Ayu Lestari</h2><p>Putri dari Bapak Sutrisno & Ibu Dwi Ratna</p>
-  <hr>
-  <p><strong>Akad Nikah:</strong><br>10 Mei 2025, Pukul 10.00 WIB</p>
-  <p><strong>Resepsi:</strong><br>11.30 WIB - Selesai</p>
-  <p><strong>Lokasi:</strong><br>Gedung Serbaguna Bahagia, Jl. Kenangan No.123, Jakarta</p>
+  <h2>Andi Ramadhan</h2>
+  <p>Putra dari Bapak Suhardi & Ibu Nuraini</p>
+  <h2>Sinta Ayu Lestari</h2>
+  <p>Putri dari Bapak Sutrisno & Ibu Dwi Ratna</p>
+  <hr />
+  <p><strong>Akad Nikah:</strong><br />10 Mei 2025, Pukul 10.00 WIB</p>
+  <p><strong>Resepsi:</strong><br />11.30 WIB - Selesai</p>
+  <p>Lokasi: Gedung Serbaguna Bahagia, Jalan Merdeka No. 123</p>
 </div>
-<div id="galeri" class="section">
-  <h1>Galeri Kenangan</h1>
-  <div style="overflow-x:auto;white-space:nowrap;">
-    <img src="gambar5.jpg" style="width:280px;height:auto;display:inline-block;margin:0 8px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-    <img src="gambar1.jpg" style="width:280px;height:auto;display:inline-block;margin:0 8px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-    <img src="gambar2.jpg" style="width:280px;height:auto;display:inline-block;margin:0 8px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-    <img src="gambar3.jpg" style="width:280px;height:auto;display:inline-block;margin:0 8px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-    <img src="gambar1.jpg" style="width:280px;height:auto;display:inline-block;margin:0 8px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-    <img src="gambar5.jpg" style="width:280px;height:auto;display:inline-block;margin:0 8px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+
+<<div id="galeri" class="section">
+  <h1>Galeri Kami</h1>
+  <div class="carousel">
+    <div class="carousel-inner">
+      <img src="Gambar1.jpg" alt="Gambar1" class="carousel-item active" />
+      <img src="Gambar2.jpg" alt="Gambar2" class="carousel-item" />
+      <img src="Gambar3.jpg" alt="Gambar3" class="carousel-item" />
+      <img src="Gambar5.jpg" alt="Gambar5" class="carousel-item" />
+      <!-- Tambah gambar lain di sini -->
+    </div>
+    <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+    <button class="carousel-btn next" onclick="nextSlide()">›</button>
   </div>
 </div>
-<div id="rsvp" class="section" style="background:#fdf9f3;">
-  <h1>Konfirmasi Kehadiran (RSVP)</h1>
-  <form class="rsvp-form" onsubmit="submitRSVP(event)">
-    <label for="nama">Nama Lengkap:</label>
-    <input type="text" id="nama" required>
-    <label for="status">Status Kehadiran:</label>
-    <select id="status">
+
+<style>
+  .carousel {
+    position: relative;
+    width: 300px;      
+    max-width: 90vw;   
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    border-radius: 10px;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255,255,255,0.7);
+    border: none;
+    font-size: 2rem;
+    padding: 5px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+  }
+  .carousel-btn.prev {
+    left: 10px;
+  }
+  .carousel-btn.next {
+    right: 10px;
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  const carouselInner = document.querySelector('.carousel-inner');
+  const items = document.querySelectorAll('.carousel-item');
+  const totalItems = items.length;
+
+  function showSlide(index) {
+    if(index < 0) index = totalItems - 1;
+    if(index >= totalItems) index = 0;
+    currentIndex = index;
+    const offset = -currentIndex * 100;
+    carouselInner.style.transform = `translateX(${offset}%)`;
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+    resetAutoSlide();
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+    resetAutoSlide();
+  }
+
+  // Auto slide tiap 3 detik
+  let autoSlideInterval = setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 3000);
+
+  // Reset interval saat user klik tombol prev/next supaya gak bentrok
+  function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 3000);
+  }
+</script>
+
+
+<div id="rsvp" class="section">
+  <h1>RSVP</h1>
+  <form id="rsvpForm" class="rsvp-form" onsubmit="return submitRSVP(event)">
+    <label for="name">Nama Lengkap:</label>
+    <input type="text" id="name" required />
+    <label for="attendance">Kehadiran:</label>
+    <select id="attendance" required>
+      <option value="" disabled selected>Pilih</option>
       <option value="Hadir">Hadir</option>
       <option value="Tidak Hadir">Tidak Hadir</option>
     </select>
-    <button type="submit">Kirim Konfirmasi</button>
+    <button type="submit">Kirim RSVP</button>
   </form>
 </div>
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <h3>Informasi Rekening Kado</h3>
-    <p><strong>Bank:</strong> Bank Mandiri</p>
-    <p><strong>Nomor:</strong> 1234 5678 9012 3456</p>
-    <p><strong>Atas Nama:</strong> Andi Ramadhan</p>
-  </div>
+
+<!-- Bagian beri ucapan, langsung tampil -->
+<div id="ucapanContainer">
+  <button onclick="showUcapanPrompt()">Beri Ucapan</button>
 </div>
+
+<!-- Bagian informasi berikan kado, langsung tampil -->
+<div id="infoKado">
+  <h3>Informasi Berikan Kado</h3>
+  <p>Jika Anda ingin memberikan kado, Anda bisa transfer ke rekening berikut:</p>
+  <div class="rekening">
+    BRI: 123-456-7890<br />
+    Iskandar Rumatela
+  </div>
+  <p>Terima kasih atas doa dan perhatian Anda.</p>
+</div>
+
+<!-- Daftar ucapan, tampil jika ada ucapan -->
+<div id="daftarUcapan">
+  <h3>Ucapan dari Para Tamu</h3>
+  <div id="listUcapan"></div>
+</div>
+
 <script>
-(function(){ // Countdown
-  var countDate = new Date('May 20, 2025 10:30:00').getTime();
-  var x = setInterval(function(){
-    var now = new Date().getTime();
-    var distance = countDate - now;
-    var d = Math.floor(distance / (1000*60*60*24));
-    var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-    var m = Math.floor((distance % (1000*60*60))/(1000*60));
-    var s = Math.floor((distance % (1000*60))/(1000));
-    document.getElementById('countdown').innerText = d+'d '+h+'h '+m+'m '+s+'s menuju Hari H';
-    if(distance<0){ clearInterval(x); document.getElementById('countdown').innerText='Selamat Hari Bahagia!'; }
-  },1000);
-})();
-function submitRSVP(e){ e.preventDefault();
-  var nama = document.getElementById('nama').value;
-  var status = document.getElementById('status').value;
-  alert(`Terima kasih, ${nama}!\nStatus: ${status}`);
-  e.target.reset();
-}
-function openModal(){document.getElementById('modal').style.display='flex';}
-function closeModal(){document.getElementById('modal').style.display='none';}
-function ucapan(){var n=prompt('Masukkan nama Anda:'),p=prompt('Tulis ucapan:');if(n&&p)alert(`Terima kasih, ${n}!\nUcapan: "${p}"`);else alert('Batal');}
-function playAudio(){var a=document.getElementById('backgroundAudio');a.play();document.getElementById('playButton').style.display='none';}
-window.onload=function(){var a=document.getElementById('backgroundAudio');if(a.paused) document.getElementById('playButton').style.display='block'; for(let i=0;i<15;i++){let p=document.createElement('div');p.classList.add('petal');p.style.left=Math.random()*100+'vw';p.style.animationDuration=(Math.random()*5+5)+'s';document.body.appendChild(p);} };
+  // Audio autoplay handle
+  const audio = document.getElementById('backgroundAudio');
+  const playBtn = document.getElementById('playButton');
+
+  audio.addEventListener('play', () => playBtn.style.display = 'none');
+  audio.addEventListener('pause', () => playBtn.style.display = 'inline-block');
+
+  function playAudio() {
+    if(audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  // Countdown timer
+  const countdownElement = document.getElementById('countdown');
+  const weddingDate = new Date('2025-05-10T10:00:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = weddingDate - now;
+    if(diff <= 0) {
+      countdownElement.textContent = "Hari H telah tiba!";
+      clearInterval(countdownInterval);
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((diff % (1000*60)) / 1000);
+    countdownElement.textContent = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik lagi`;
+  }
+  const countdownInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // RSVP form submit (tetap simpan tapi tidak sembunyikan ucapan atau info kado)
+  function submitRSVP(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const attendance = document.getElementById('attendance').value;
+
+    if (!name || !attendance) {
+      alert('Mohon isi semua data RSVP');
+      return false;
+    }
+
+    alert(`Terima kasih, ${name}. RSVP Anda telah diterima.`);
+
+    // Reset form saja, jangan sembunyikan ucapan atau info kado
+    document.getElementById('rsvpForm').reset();
+
+    return false;
+  }
+
+  // Ucapan handling
+  const ucapanList = [];
+  const daftarUcapanDiv = document.getElementById('daftarUcapan');
+  const listUcapanDiv = document.getElementById('listUcapan');
+
+  function showUcapanPrompt() {
+    const nama = prompt('Masukkan nama Anda:');
+    if(!nama) return alert('Nama harus diisi.');
+    const pesan = prompt('Masukkan ucapan Anda:');
+    if(!pesan) return alert('Ucapan tidak boleh kosong.');
+
+    addUcapan(nama, pesan);
+  }
+
+  function addUcapan(nama, pesan) {
+    ucapanList.push({ nama, pesan });
+    renderUcapan();
+  }
+
+  function renderUcapan() {
+    if(ucapanList.length === 0) {
+      daftarUcapanDiv.style.display = 'none';
+      return;
+    }
+    daftarUcapanDiv.style.display = 'block';
+
+    listUcapanDiv.innerHTML = '';
+    ucapanList.forEach(({nama, pesan}) => {
+      const div = document.createElement('div');
+      div.className = 'ucapan-item';
+      div.innerHTML = `<span class="ucapan-nama">${escapeHtml(nama)}</span>: <span class="ucapan-teks">${escapeHtml(pesan)}</span>`;
+      listUcapanDiv.appendChild(div);
+    });
+  }
+
+  // Simple HTML escape to prevent injection in ucapan
+  function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, function(m) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+    });
+  }
+
+  // Render ucapan awal kosong (sehingga daftar ucapan tidak tampil)
+  renderUcapan();
 </script>
 </body>
 </html>
