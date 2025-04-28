@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Iskandar & Pasangan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+    .background {
+      background: url('Gambar5.jpg') no-repeat center center/cover;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%; width: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .content p {
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+    .envelope-button {
+      background: white;
+      color: #2d6a4f;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+      transition: background 0.3s;
+    }
+    .envelope-button:hover {
+      background: #ffd166;
+      color: #2d6a4f;
+    }
+    .envelope-icon {
+      width: 24px;
+      height: 24px;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Iskandar & Pasangan</h1>
+      <h2>20 Mei 2025</h2>
+      <p>Dar <span id="namaTamu">Tamu Undangan</span></p>
+      <button class="envelope-button" onclick="openInvitation()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099180.png" alt="Amplop" class="envelope-icon" />
+        Open Invitation
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Ambil parameter nama dari URL
+    function getNamaTamu() {
+      const params = new URLSearchParams(window.location.search);
+      let nama = params.get('nama');
+      if (!nama) return 'Tamu Undangan';
+      return decodeURIComponent(nama.replace(/\+/g, ' '));
+    }
+
+    window.onload = function() {
+      document.getElementById('namaTamu').innerText = getNamaTamu();
+    }
+
+    function openInvitation() {
+      window.location.href = "index.html"; // Ganti sesuai file undangan utama kamu
+    }
+  </script>
+</body>
+</html>
