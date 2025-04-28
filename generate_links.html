@@ -5,58 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Generator Link Undangan</title>
   <style>
+    /* Reset dan dasar */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       max-width: 600px;
       margin: 40px auto;
-      padding: 10px;
+      padding: 20px 25px;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+      user-select: none;
     }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1b4332;
+      font-weight: 700;
+      font-size: 2rem;
+      user-select: text;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+      color: #344e41;
+      user-select: text;
+    }
+
+    input[type="text"],
     textarea {
       width: 100%;
-      height: 200px;
+      padding: 12px 15px;
       font-size: 16px;
-      padding: 10px;
-      box-sizing: border-box;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1.8px solid #a7c957;
+      background-color: #e9f5db;
+      color: #2f4f4f;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       resize: vertical;
+      min-height: 140px;
+      user-select: text;
     }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #609966;
+      box-shadow: 0 0 8px #a7c957aa;
+      outline: none;
+      background-color: #f0fae9;
+    }
+
     button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      font-size: 16px;
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      font-size: 18px;
+      font-weight: 700;
       cursor: pointer;
-      background: #2d6a4f;
+      background: #609966;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 5px 10px #3c8a66cc;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
     }
-    button:hover {
-      background: #3c8a66;
+
+    button:hover,
+    button:focus {
+      background: #497b4f;
+      box-shadow: 0 7px 15px #365e3fcc;
+      outline: none;
     }
+
     .output {
-      margin-top: 20px;
-      background: #f7f7f7;
-      padding: 15px;
-      border-radius: 8px;
+      margin-top: 25px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(166, 209, 154, 0.4);
+      font-family: 'Courier New', Courier, monospace;
       white-space: pre-wrap;
-      font-family: monospace;
       max-height: 300px;
       overflow-y: auto;
+      color: #2f4f4f;
+      user-select: text;
     }
-    label {
-      font-weight: bold;
-      margin-bottom: 6px;
-      display: block;
+
+    /* Scrollbar styling for modern browsers */
+    .output::-webkit-scrollbar {
+      width: 8px;
     }
-    input[type="text"] {
-      width: 100%;
-      padding: 8px;
-      font-size: 16px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
+    .output::-webkit-scrollbar-thumb {
+      background-color: #a7c957cc;
+      border-radius: 10px;
+    }
+    .output::-webkit-scrollbar-track {
+      background: #e9f5db;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -64,7 +118,7 @@
 
   <h2>Generator Link Undangan</h2>
   <label for="baseUrl">Masukkan URL dasar undangan (misal: https://namadomainkamu.com/splash.html)</label>
-  <input type="text" id="baseUrl" placeholder="https://namadomainkamu.com/splash.html" />
+  <input type="text" id="baseUrl" placeholder="https://namadomainkamu.com/splash.html" autocomplete="off" />
 
   <label for="namaList">Masukkan daftar nama tamu, satu nama per baris:</label>
   <textarea id="namaList" placeholder="Pak Budi&#10;Ibu Siti&#10;Keluarga Andi"></textarea>
